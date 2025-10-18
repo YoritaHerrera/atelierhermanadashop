@@ -1,9 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Playfair_Display } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import { Playfair_Display, Lora } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
@@ -12,6 +9,12 @@ import "./globals.css"
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  display: "swap",
+})
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
   display: "swap",
 })
 
@@ -28,14 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}>
+      <body className={`font-sans ${lora.variable} ${playfair.variable}`}>
         <Suspense fallback={null}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <ThemeProvider>
             {children}
             <Toaster />
           </ThemeProvider>
         </Suspense>
-        <Analytics />
       </body>
     </html>
   )
