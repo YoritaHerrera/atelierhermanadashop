@@ -2,16 +2,12 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ShoppingCart, Heart, User, Menu, Moon, Sun, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Suspense } from "react"
 
 export function SiteHeader() {
-  const { setTheme, theme } = useTheme()
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -44,33 +40,23 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
             <Link href="/buscar">
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Buscar</span>
+              🔍<span className="sr-only">Buscar</span>
             </Link>
           </Button>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hidden sm:inline-flex"
-          >
-            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">Cambiar tema</span>
+          <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
+            🌙<span className="sr-only">Cambiar tema</span>
           </Button>
 
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link href="/favoritos">
-              <Heart className="h-5 w-5" />
-              <span className="sr-only">Favoritos</span>
+              ♡<span className="sr-only">Favoritos</span>
             </Link>
           </Button>
 
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link href="/carrito">
-              <ShoppingCart className="h-5 w-5" />
-              <Suspense fallback={null}>{/* Cart count will be added here */}</Suspense>
+              🛒<Suspense fallback={null}>{/* Cart count will be added here */}</Suspense>
               <span className="sr-only">Carrito</span>
             </Link>
           </Button>
@@ -78,8 +64,7 @@ export function SiteHeader() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Cuenta</span>
+                👤<span className="sr-only">Cuenta</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -102,8 +87,7 @@ export function SiteHeader() {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Menú</span>
+                ☰<span className="sr-only">Menú</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
@@ -124,13 +108,8 @@ export function SiteHeader() {
                 <Link href="/buscar" className="text-lg font-medium">
                   Buscar
                 </Link>
-                <Button
-                  variant="outline"
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="justify-start"
-                >
-                  {theme === "dark" ? <Sun className="mr-2 h-5 w-5" /> : <Moon className="mr-2 h-5 w-5" />}
-                  Cambiar Tema
+                <Button variant="outline" className="justify-start bg-transparent">
+                  🌙 Cambiar Tema
                 </Button>
               </nav>
             </SheetContent>

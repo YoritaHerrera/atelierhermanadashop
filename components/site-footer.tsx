@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, Facebook, Mail } from "lucide-react"
 
 export function SiteFooter() {
   return (
@@ -99,8 +98,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
               >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
+                📷<span className="sr-only">Instagram</span>
               </Link>
               <Link
                 href="https://facebook.com"
@@ -108,15 +106,13 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
               >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
+                f<span className="sr-only">Facebook</span>
               </Link>
               <Link
                 href="mailto:hola@atelierhermanada.com"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
               >
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
+                ✉<span className="sr-only">Email</span>
               </Link>
             </div>
           </div>
