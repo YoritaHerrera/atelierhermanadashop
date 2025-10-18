@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
-import { X } from "lucide-react"
 
 type Material = {
   id: string
@@ -47,8 +46,7 @@ export function ProductFilters({ materials, collections }: { materials: Material
     <div className="space-y-6">
       {hasFilters && (
         <Button variant="outline" size="sm" onClick={clearFilters} className="w-full bg-transparent">
-          <X className="mr-2 h-4 w-4" />
-          Limpiar Filtros
+          ✕ Limpiar Filtros
         </Button>
       )}
 

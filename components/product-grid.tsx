@@ -2,7 +2,6 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Heart } from "lucide-react"
 import { AddToCartButton } from "@/components/add-to-cart-button"
 import Link from "next/link"
 
@@ -56,8 +55,7 @@ export function ProductGrid({ products }: { products: Product[] }) {
                       // TODO: Add to favorites
                     }}
                   >
-                    <Heart className="h-4 w-4" />
-                    <span className="sr-only">Agregar a favoritos</span>
+                    ♡<span className="sr-only">Agregar a favoritos</span>
                   </Button>
                 </div>
               </div>
