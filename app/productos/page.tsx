@@ -1,4 +1,4 @@
-export default async function ProductsPage() {
+export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border/40 bg-card/30 py-8">
