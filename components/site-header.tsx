@@ -1,11 +1,6 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Suspense } from "react"
 
 export function SiteHeader() {
   return (
@@ -56,64 +51,47 @@ export function SiteHeader() {
 
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link href="/carrito">
-              🛒<Suspense fallback={null}>{/* Cart count will be added here */}</Suspense>
-              <span className="sr-only">Carrito</span>
+              🛒<span className="sr-only">Carrito</span>
             </Link>
           </Button>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
+          <div className="hidden sm:flex items-center gap-1">
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/dashboard">
                 👤<span className="sr-only">Cuenta</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link href="/dashboard">Mi Cuenta</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/dashboard/pedidos">Mis Pedidos</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/favoritos">Mis Favoritos</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/auth/login">Iniciar Sesión</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </Link>
+            </Button>
+          </div>
 
           {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+          <details className="md:hidden">
+            <summary className="cursor-pointer list-none">
+              <Button variant="ghost" size="icon">
                 ☰<span className="sr-only">Menú</span>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col gap-4">
-                <Link href="/" className="text-lg font-medium">
-                  Inicio
-                </Link>
-                <Link href="/productos" className="text-lg font-medium">
-                  Productos
-                </Link>
-                <Link href="/colecciones" className="text-lg font-medium">
-                  Colecciones
-                </Link>
-                <Link href="/sobre-nosotros" className="text-lg font-medium">
-                  Sobre Nosotros
-                </Link>
-                <div className="my-4 h-px bg-border" />
-                <Link href="/buscar" className="text-lg font-medium">
-                  Buscar
-                </Link>
-                <Button variant="outline" className="justify-start bg-transparent">
-                  🌙 Cambiar Tema
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+            </summary>
+            <nav className="absolute right-0 top-16 w-48 rounded-lg border border-border/40 bg-background shadow-lg p-4 flex flex-col gap-4">
+              <Link href="/" className="text-lg font-medium hover:text-primary">
+                Inicio
+              </Link>
+              <Link href="/productos" className="text-lg font-medium hover:text-primary">
+                Productos
+              </Link>
+              <Link href="/colecciones" className="text-lg font-medium hover:text-primary">
+                Colecciones
+              </Link>
+              <Link href="/sobre-nosotros" className="text-lg font-medium hover:text-primary">
+                Sobre Nosotros
+              </Link>
+              <div className="my-2 h-px bg-border" />
+              <Link href="/buscar" className="text-lg font-medium hover:text-primary">
+                🔍 Buscar
+              </Link>
+              <Link href="/dashboard" className="text-lg font-medium hover:text-primary">
+                👤 Mi Cuenta
+              </Link>
+            </nav>
+          </details>
         </div>
       </div>
     </header>
