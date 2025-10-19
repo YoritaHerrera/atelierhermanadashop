@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { useTheme } from "@/components/theme-provider"
 
 export function SiteHeader() {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -39,8 +44,9 @@ export function SiteHeader() {
             </Link>
           </Button>
 
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
-            🌙<span className="sr-only">Cambiar tema</span>
+          <Button variant="ghost" size="icon" onClick={toggleTheme} className="hidden sm:inline-flex">
+            {theme === "dark" ? "☀️" : "🌙"}
+            <span className="sr-only">Cambiar tema</span>
           </Button>
 
           <Button variant="ghost" size="icon" asChild className="relative">

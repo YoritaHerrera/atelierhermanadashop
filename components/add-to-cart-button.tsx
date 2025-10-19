@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ShoppingCart } from "lucide-react"
 import { addToCart } from "@/lib/cart-actions"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -30,8 +29,7 @@ export function AddToCartButton({ productId, className }: { productId: string; c
 
   return (
     <Button onClick={handleAddToCart} disabled={isLoading} className={className}>
-      <ShoppingCart className="mr-2 h-4 w-4" />
-      {isLoading ? "Agregando..." : "Agregar al Carrito"}
+      🛒 {isLoading ? "Agregando..." : "Agregar al Carrito"}
     </Button>
   )
 }
