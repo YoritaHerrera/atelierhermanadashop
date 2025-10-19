@@ -91,13 +91,41 @@ class QueryBuilder {
   }
 }
 
+class SupabaseClient {
+  private supabaseUrl: string
+  private supabaseKey: string
+
+  constructor(supabaseUrl: string, supabaseKey: string) {
+    this.supabaseUrl = supabaseUrl
+    this.supabaseKey = supabaseKey
+  }
+
+  from(table: string) {
+    return new QueryBuilder(this.supabaseUrl, this.supabaseKey, table)
+  }
+
+  auth = {
+    getUser: async () => {
+      // In v0 runtime, we return a mock user for development
+      // In production, this would get the user from the session
+      return {
+        data: {
+          user: {
+            id: "mock-user-id",
+            email: "user@example.com",
+          },
+        },
+        error: null,
+      }
+    },
+  }
+}
+
 export async function createClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
-  return {
-    from: (table: string) => new QueryBuilder(supabaseUrl, supabaseKey, table),
-  }
+  return new SupabaseClient(supabaseUrl, supabaseKey)
 }
 
 export const createServerClient = createClient
