@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CartItemsList } from "@/components/cart-items-list"
 import { getCartItems } from "@/lib/cart-actions"
 import Link from "next/link"
-import { ShoppingBag } from "lucide-react"
 
 export default async function CartPage() {
   const { items, total } = await getCartItems()
@@ -27,7 +26,7 @@ export default async function CartPage() {
         <div className="container py-8">
           {items.length === 0 ? (
             <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
-              <ShoppingBag className="mb-4 h-16 w-16 text-muted-foreground" />
+              <div className="mb-4 text-6xl">🛍️</div>
               <h2 className="mb-2 font-serif text-2xl font-bold">Tu carrito está vacío</h2>
               <p className="mb-6 text-muted-foreground">Agrega productos para comenzar tu compra</p>
               <Button asChild size="lg">
