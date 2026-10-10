@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Moon, Search, ShoppingCart, Sun, User, Heart } from "lucide-react"
+import { Menu, Moon, Search, ShoppingCart, Sun, User, Heart, X } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 
 export function SiteHeader() {
@@ -75,32 +75,31 @@ export function SiteHeader() {
           </div>
 
           {/* Mobile Menu */}
-          <details className="md:hidden">
-            <summary className="cursor-pointer list-none">
-              <Button variant="ghost" size="icon">
-                ☰<span className="sr-only">Menú</span>
+          <details className="relative md:hidden">
+            <summary className="flex cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <Button variant="ghost" size="icon" asChild aria-label="Abrir menú">
+                <span><Menu aria-hidden="true" /></span>
               </Button>
             </summary>
-            <nav className="absolute right-0 top-16 w-48 rounded-lg border border-border/40 bg-background shadow-lg p-4 flex flex-col gap-4">
-              <Link href="/" className="text-lg font-medium hover:text-primary">
-                Inicio
-              </Link>
-              <Link href="/productos" className="text-lg font-medium hover:text-primary">
-                Productos
-              </Link>
-              <Link href="/colecciones" className="text-lg font-medium hover:text-primary">
-                Colecciones
-              </Link>
-              <Link href="/sobre-nosotros" className="text-lg font-medium hover:text-primary">
-                Sobre Nosotros
-              </Link>
+            <nav className="absolute right-0 top-12 z-50 flex w-64 flex-col gap-1 rounded-xl border border-border bg-background p-3 text-foreground shadow-xl">
+              <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Navegación</p>
+              <Link href="/" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Inicio</Link>
+              <Link href="/productos" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Productos</Link>
+              <Link href="/colecciones" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Colecciones</Link>
+              <Link href="/sobre-nosotros" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Sobre Nosotros</Link>
               <div className="my-2 h-px bg-border" />
-              <Link href="/buscar" className="text-lg font-medium hover:text-primary">
-                🔍 Buscar
-              </Link>
-              <Link href="/dashboard" className="text-lg font-medium hover:text-primary">
-                👤 Mi Cuenta
-              </Link>
+              <Link href="/buscar" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Buscar</Link>
+              <Link href="/dashboard" className="rounded-lg px-3 py-2 text-base font-medium hover:bg-muted">Mi Cuenta</Link>
+              <div className="my-2 h-px bg-border" />
+              <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Modo de color</p>
+              <div className="grid grid-cols-2 gap-2">
+                <Button type="button" variant={theme === "light" ? "secondary" : "ghost"} className="justify-start" onClick={() => theme === "dark" && toggleTheme()}>
+                  <Sun data-icon="inline-start" /> Claro
+                </Button>
+                <Button type="button" variant={theme === "dark" ? "secondary" : "ghost"} className="justify-start" onClick={() => theme === "light" && toggleTheme()}>
+                  <Moon data-icon="inline-start" /> Oscuro
+                </Button>
+              </div>
             </nav>
           </details>
         </div>
