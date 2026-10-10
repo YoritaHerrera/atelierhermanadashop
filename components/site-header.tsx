@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Moon, Search, ShoppingCart, Sun, User, Heart } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 
 export function SiteHeader() {
@@ -38,33 +39,37 @@ export function SiteHeader() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
+          <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex" aria-label="Buscar">
             <Link href="/buscar">
-              🔍<span className="sr-only">Buscar</span>
+              <Search aria-hidden="true" />
+              <span className="sr-only">Buscar</span>
             </Link>
           </Button>
 
-          <Button variant="ghost" size="icon" onClick={toggleTheme} className="hidden sm:inline-flex">
-            {theme === "dark" ? "☀️" : "🌙"}
-            <span className="sr-only">Cambiar tema</span>
+          <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}>
+            {theme === "dark" ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
+            <span className="sr-only">{theme === "dark" ? "Modo claro" : "Modo oscuro"}</span>
           </Button>
 
-          <Button variant="ghost" size="icon" asChild className="relative">
+          <Button variant="ghost" size="icon" asChild className="relative hidden sm:inline-flex" aria-label="Favoritos">
             <Link href="/favoritos">
-              ♡<span className="sr-only">Favoritos</span>
+              <Heart aria-hidden="true" />
+              <span className="sr-only">Favoritos</span>
             </Link>
           </Button>
 
-          <Button variant="ghost" size="icon" asChild className="relative">
+          <Button variant="ghost" size="icon" asChild className="relative hidden sm:inline-flex" aria-label="Carrito">
             <Link href="/carrito">
-              🛒<span className="sr-only">Carrito</span>
+              <ShoppingCart aria-hidden="true" />
+              <span className="sr-only">Carrito</span>
             </Link>
           </Button>
 
           <div className="hidden sm:flex items-center gap-1">
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild aria-label="Cuenta">
               <Link href="/dashboard">
-                👤<span className="sr-only">Cuenta</span>
+                <User aria-hidden="true" />
+                <span className="sr-only">Cuenta</span>
               </Link>
             </Button>
           </div>
