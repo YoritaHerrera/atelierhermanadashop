@@ -71,11 +71,11 @@ export default function HomePage() {
             <Link href="/colecciones" className="text-sm font-medium hover:text-primary">
               Colecciones
             </Link>
-            <Link href="/acerca-de" className="text-sm font-medium hover:text-primary">
-              Acerca de
+            <Link href="/sobre-nosotros" className="text-sm font-medium hover:text-primary">
+              Sobre nosotros
             </Link>
-            <Link href="/contacto" className="text-sm font-medium hover:text-primary">
-              Contacto
+            <Link href="/buscar" className="text-sm font-medium hover:text-primary">
+              Buscar
             </Link>
           </nav>
           <div className="flex gap-4">

@@ -1,6 +1,10 @@
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
+
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
+      <SiteHeader />
       <header className="border-b border-border/40 bg-card/30 py-8">
         <div className="container">
           <h1 className="font-serif text-3xl font-bold">Productos</h1>
@@ -17,11 +21,7 @@ export default function ProductsPage() {
         </div>
       </main>
 
-      <footer className="border-t border-border/40 bg-card/50 py-8 mt-12">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Atelier Hermanada. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
